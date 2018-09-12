@@ -21,6 +21,6 @@
 3. **仔细阅读服务号开发文档**[微信开发文档](https://mp.weixin.qq.com/wiki?t=resource/res_main&id=mp1445241432)
 ### 给自己打个广告
 ---
-关注下我的个人博客v1.0[传送门](www.fre3sia.site)
+关注下我的个人博客v1.0[传送门](http://fre3sia.site)
 
 有任何问题可以在留言板留言给我。
