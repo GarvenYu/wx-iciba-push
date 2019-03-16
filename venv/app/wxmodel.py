@@ -27,7 +27,7 @@ class WxModel(object):
             logger.error(resp.status_code)
         resp_str = json.loads(resp.text)
         if resp_str.get('errcode'):
-            logger.error("Error!"+resp_str)
+            logger.error("Error!" + resp_str)
         return resp_str.get('access_token')
 
     def get_user_list(self):
@@ -40,29 +40,29 @@ class WxModel(object):
             logger.error(resp.status_code)
         resp_str = json.loads(resp.text)
         if resp_str.get('errcode'):
-            logger.error("Error!"+resp_str)
+            logger.error("Error!" + resp_str)
         return resp_str.get('data').get('openid')
 
     def send_message(self, msg_content):
         """调用接口发送模板消息"""
         for openid in self.open_ids:
             msg_body = {
-                   "touser": openid,
-                   "template_id": self.template_id,
-                   "url": msg_content.get('fenxiang_img'),
-                   "data": {
-                            "content": {
-                               "value": msg_content.get('content')
-                            },
-                            "note": {
-                                "value": msg_content.get('note')
-                            },
-                            "love": {
-                                "value": "{love}人喜欢".format(love=msg_content.get('love'))
-                            },
-                            "translation": {
-                                "value": msg_content.get('translation')
-                            }
-                        }
+                "touser": openid,
+                "template_id": self.template_id,
+                "url": msg_content.get('fenxiang_img'),
+                "data": {
+                    "content": {
+                        "value": msg_content.get('content')
+                    },
+                    "note": {
+                        "value": msg_content.get('note')
+                    },
+                    "love": {
+                        "value": "{love}人喜欢".format(love=msg_content.get('love'))
+                    },
+                    "translation": {
+                        "value": msg_content.get('translation')
+                    }
+                }
             }
         requests.post(self.send_msg_url.format(token=self.token), data=json.dumps(msg_body))

@@ -3,7 +3,7 @@
 
 import requests
 import json
-from app.wxmodel import WxModel
+from .wxmodel import WxModel
 
 
 class iciba(object):
@@ -18,10 +18,7 @@ class iciba(object):
             return json.loads(response.text, encoding="UTF-8")
 
     def run(self):
+        # 获取信息
         msg_content = self.get_iciba_words()
+        # 发送消息到手机端
         self.wx_model.send_message(msg_content)
-
-
-if __name__ == "__main__":
-    iciba_instance = iciba()
-    iciba_instance.run()
