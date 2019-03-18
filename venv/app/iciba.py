@@ -11,6 +11,8 @@ class iciba(object):
 
     def __init__(self):
         self.wx_model = WxModel()
+        # 获取信息
+        self.msg_content = self.get_iciba_words()
 
     def get_iciba_words(self, date=None, file=None, type=None):
         response = requests.get(self.iciba_api_url)
@@ -18,7 +20,5 @@ class iciba(object):
             return json.loads(response.text, encoding="UTF-8")
 
     def run(self):
-        # 获取信息
-        msg_content = self.get_iciba_words()
         # 发送消息到手机端
-        self.wx_model.send_message(msg_content)
+        self.wx_model.send_message(self.msg_content)
